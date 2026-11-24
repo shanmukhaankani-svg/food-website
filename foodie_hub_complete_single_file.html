@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding for proper text display -->
+    <meta charset="UTF-8">
+    <!-- Responsive viewport meta tag so the website looks good on mobile, tablet, and desktop -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title shown in the browser tab -->
+    <title>FOODIE HUB - Good Food, Great Mood!</title>
+    <!-- Google Fonts for clean and readable typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- =========================================================================
+         INTERNAL CSS STYLESHEET (All CSS3 rules inside <style> tag)
+         Color Palette:
+         - Primary Orange: #ff5722 (Hover: #e64a19)
+         - Cream Background: #fff8f0
+         - Pure White: #ffffff
+         - Dark Brown Text/Accents: #2c1810
+         ========================================================================= -->
+    <style>
+        /* 1. RESET & BASIC PAGE SETUP */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Ensures padding does not increase element width */
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling when clicking navigation links */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #2c1810; /* Dark brown for clean readability */
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Reusable Container to center content with side margins */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Reusable Section Padding & Backgrounds */
+        .section {
+            padding: 70px 0;
+        }
+
+        .bg-cream {
+            background-color: #fff8f0; /* Warm cream background */
+        }
+
+        .bg-white {
+            background-color: #ffffff;
+        }
+
+        /* Section Title Styling */
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #2c1810;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #6d4c41;
+            font-size: 1rem;
+        }
+
+        /* =========================================================================
+           2. BUTTON STYLES & HOVER TRANSITIONS
+           ========================================================================= */
+        .btn {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 25px; /* Rounded pill buttons */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease; /* Smooth animation on hover */
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #ff5722;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: #e64a19;
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        .btn-secondary {
+            background-color: #2c1810;
+            color: #ffffff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4e2a1e;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #ff5722;
+            color: #ff5722;
+        }
+
+        .btn-outline:hover {
+            background-color: #ff5722;
+            color: #ffffff;
+        }
+
+        .btn-white {
+            background-color: #ffffff;
+            color: #ff5722;
+        }
+
+        .btn-white:hover {
+            background-color: #fff8f0;
+            transform: translateY(-2px);
+        }
+
+        .full-width {
+            display: block;
+            width: 100%;
+        }
+
+        /* =========================================================================
+           3. SECTION 1: STICKY NAVIGATION BAR
+           ========================================================================= */
+        .navbar {
+            position: sticky; /* Keeps navbar fixed at the top while scrolling */
+            top: 0;
+            z-index: 1000;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(44, 24, 16, 0.08);
+            padding: 12px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo a {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2c1810;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #ff5722;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            color: #6d4c41;
+            margin-top: -4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c1810;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff5722;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #fff8f0;
+            border: 1px solid #ffccbc;
+            border-radius: 20px;
+            padding: 5px 12px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: #2c1810;
+            width: 120px;
+        }
+
+        .btn-login {
+            background-color: #ff5722;
+            color: #ffffff;
+            padding: 7px 18px;
+        }
+
+        .btn-login:hover {
+            background-color: #2c1810;
+        }
+
+        /* =========================================================================
+           4. SECTION 2: HERO SECTION
+           ========================================================================= */
+        .hero {
+            /* Attractive food background image */
+            background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Dark brown semi-transparent overlay so white text is easy to read */
+        .hero-overlay {
+            background: rgba(44, 24, 16, 0.72);
+            width: 100%;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            color: #ffffff;
+            max-width: 700px;
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background-color: #ff5722;
+            color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #fff8f0;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================================================================
+           5. RESPONSIVE CSS GRID LAYOUTS
+           ========================================================================= */
+        /* 4-Column Grid (Used for Categories, Dishes, Offers, Benefits) */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        /* 3-Column Grid (Used for Restaurants, Customer Reviews) */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        /* =========================================================================
+           6. CARDS STYLING (CATEGORIES, RESTAURANTS, DISHES)
+           ========================================================================= */
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px; /* Rounded card corners */
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(44, 24, 16, 0.08); /* Subtle shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px); /* Card lifts smoothly on hover */
+            box-shadow: 0 12px 24px rgba(44, 24, 16, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover; /* Keeps images neat without stretching */
+            display: block;
+        }
+
+        .card-body {
+            padding: 18px;
+        }
+
+        .category-card {
+            text-align: center;
+        }
+
+        .category-card h3 {
+            color: #2c1810;
+            margin-bottom: 6px;
+            font-size: 1.15rem;
+        }
+
+        .category-card p {
+            font-size: 0.88rem;
+            color: #6d4c41;
+        }
+
+        /* Restaurant & Dish Card Specifics */
+        .card-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .card-title-row h3 {
+            font-size: 1.1rem;
+            color: #2c1810;
+        }
+
+        .rating {
+            background-color: #2e7d32;
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .food-type {
+            font-size: 0.88rem;
+            color: #6d4c41;
+            margin-bottom: 12px;
+        }
+
+        .restaurant-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #2c1810;
+            background-color: #fff8f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ff5722;
+            margin-bottom: 6px;
+        }
+
+        .dish-desc {
+            font-size: 0.85rem;
+            color: #6d4c41;
+            margin-bottom: 15px;
+            min-height: 42px;
+        }
+
+        /* =========================================================================
+           7. SECTION 6: SPECIAL OFFERS
+           ========================================================================= */
+        .offer-card {
+            padding: 28px 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(44, 24, 16, 0.12);
+            transition: transform 0.3s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .offer-orange {
+            background: linear-gradient(135deg, #ff7043, #ff5722);
+        }
+
+        .offer-dark {
+            background: linear-gradient(135deg, #4e2a1e, #2c1810);
+        }
+
+        .offer-tag {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .offer-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+        }
+
+        .offer-card p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            color: #fff8f0;
+        }
+
+        .coupon-code {
+            background-color: rgba(0, 0, 0, 0.25);
+            border: 1px dashed #ffffff;
+            padding: 6px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 18px;
+        }
+
+        /* =========================================================================
+           8. SECTION 7: WHY CHOOSE US
+           ========================================================================= */
+        .feature-box {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(44, 24, 16, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-box h3 {
+            color: #2c1810;
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+        }
+
+        .feature-box p {
+            font-size: 0.88rem;
+            color: #6d4c41;
+        }
+
+        /* =========================================================================
+           9. SECTION 8: CUSTOMER REVIEWS
+           ========================================================================= */
+        .review-card {
+            background-color: #fff8f0;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #ffe0b2;
+            box-shadow: 0 6px 15px rgba(44, 24, 16, 0.05);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .review-header img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%; /* Circular profile image */
+            object-fit: cover;
+            border: 2px solid #ff5722;
+        }
+
+        .review-header h4 {
+            color: #2c1810;
+            font-size: 1.05rem;
+        }
+
+        .stars {
+            color: #ff9800;
+            font-size: 1rem;
+        }
+
+        .review-card p {
+            font-size: 0.92rem;
+            color: #4e342e;
+            font-style: italic;
+        }
+
+        /* =========================================================================
+           10. SECTION 9: CONTACT SECTION
+           ========================================================================= */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(44, 24, 16, 0.08);
+        }
+
+        .contact-info h3,
+        .contact-form-box h3 {
+            font-size: 1.5rem;
+            color: #2c1810;
+            margin-bottom: 12px;
+        }
+
+        .contact-info > p {
+            color: #6d4c41;
+            margin-bottom: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            background-color: #fff8f0;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .info-item h4 {
+            color: #2c1810;
+            font-size: 1rem;
+        }
+
+        .info-item p {
+            color: #6d4c41;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Form Styling */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: #2c1810;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d7ccc8;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            background-color: #fff8f0;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #ff5722;
+        }
+
+        /* =========================================================================
+           11. SECTION 10: FOOTER
+           ========================================================================= */
+        .footer {
+            background-color: #2c1810; /* Dark brown footer */
+            color: #fff8f0;
+            padding-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 30px;
+            padding-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer-logo span {
+            color: #ff5722;
+        }
+
+        .footer-tagline {
+            color: #ffab91;
+            font-size: 0.85rem;
+            margin: 5px 0 12px;
+        }
+
+        .footer-about {
+            font-size: 0.88rem;
+            color: #d7ccc8;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            color: #d7ccc8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ff5722;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: #fff8f0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff5722;
+        }
+
+        .footer-bottom {
+            background-color: #1e100a;
+            text-align: center;
+            padding: 18px;
+            font-size: 0.85rem;
+            color: #bcaaa4;
+        }
+
+        /* =========================================================================
+           12. MEDIA QUERIES (RESPONSIVE DESIGN FOR TABLET & MOBILE)
+           ========================================================================= */
+
+        /* Tablet Screens (Width 992px or smaller) */
+        @media (max-width: 992px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr); /* 4 columns become 2 columns */
+            }
+
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr); /* 3 columns become 2 columns */
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        /* Mobile Screens (Width 600px or smaller) */
+        @media (max-width: 600px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .grid-4,
+            .grid-3,
+            .contact-wrapper,
+            .footer-grid {
+                grid-template-columns: 1fr; /* Everything stacks cleanly in 1 column */
+            }
+
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .contact-wrapper {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =====================================================================
+         SECTION 1: NAVIGATION BAR
+         Purpose: Sticky top header with logo, navigation links, search, and login.
+         ===================================================================== -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <!-- Website Logo & Tagline -->
+            <div class="logo">
+                <a href="#home">🍔 FOODIE <span>HUB</span></a>
+                <p class="tagline">Good Food, Great Mood!</p>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#categories">Categories</a>
+                <a href="#restaurants">Restaurants</a>
+                <a href="#dishes">Popular Dishes</a>
+                <a href="#offers">Offers</a>
+                <a href="#contact">Contact Us</a>
+            </nav>
+
+            <!-- Search Box and Login Button -->
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search food...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <a href="#contact" class="btn btn-login">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main>
+
+        <!-- =====================================================================
+             SECTION 2: HERO SECTION
+             Purpose: Eye-catching welcome banner with main heading and call-to-action buttons.
+             ===================================================================== -->
+        <section id="home" class="hero">
+            <div class="hero-overlay">
+                <div class="container hero-content">
+                    <!-- Special Promotional Badge -->
+                    <span class="promo-badge">🎉 Free Delivery on your first order! Use code: WELCOME</span>
+                    
+                    <!-- Main Heading -->
+                    <h1>Delicious Food Delivered To Your Doorstep!</h1>
+                    
+                    <!-- Subtitle -->
+                    <p>Discover the best restaurants around you and enjoy your favourite meals.</p>
+                    
+                    <!-- Action Buttons -->
+                    <div class="hero-buttons">
+                        <a href="#categories" class="btn btn-primary">Explore Food</a>
+                        <a href="#dishes" class="btn btn-secondary">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 3: FOOD CATEGORIES
+             Purpose: Displays 8 popular food categories in a responsive grid layout.
+             ===================================================================== -->
+        <section id="categories" class="section bg-cream">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Explore Food Categories</h2>
+                    <p>Craving something specific? Choose from our wide range of delicious categories.</p>
+                </div>
+
+                <!-- Grid Container for Category Cards -->
+                <div class="grid-4">
+                    <!-- Category 1: Pizza -->
+                    <article class="card category-card">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80" alt="Pizza">
+                        <div class="card-body">
+                            <h3>Pizza</h3>
+                            <p>Cheesy, hot, and loaded with your favorite toppings.</p>
+                        </div>
+                    </article>
+
+                    <!-- Category 2: Burgers -->
+                    <article class="card category-card">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" alt="Burgers">
+                        <div class="card-body">
+                            <h3>Burgers</h3>
+                            <p>Juicy patties tucked inside soft, toasted sesame buns.</p>
+                        </div>
+                    </article>
+
+                    <!-- Category 3: Biryani -->
+                    <article class="card category-card">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80" alt="Biryani">
+                        <div class="card-body">
+                            <h3>Biryani</h3>
+                            <p>Aromatic basmati rice cooked with rich Indian spices.</p>
+                        </div>
+                    </article>
+
+                    <!-- Category 4: Chinese -->
+                    <article class="card category-card">
+                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=500&q=80" alt="Chinese">
+                        <div class="card-body">
+                            <h3>Chinese</h3>
+                            <p>Flavorful noodles, fried rice, and spicy Manchurian.</p>
+                        </div>
+                    </article>
+
+                    <!-- Category 5: South Indian -->
+                    <article class="card category-card">
+                        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80" alt="South Indian">
+                        <div class="card-body">
+                            <h3>South Indian</h3>
+                            <p>Crispy dosas, fluffy idlis, and authentic sambar.</p>
+                        </div>
+                    </article>
+
+                    <!-- Category 6: Desserts -->
+                    <article class="card category-card">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=500&q=80" alt="Desserts">
+                        <div class="card-body">
+                            <h3>Desserts</h3>
+                            <p>Sweet cakes, pastries, and brownies to end your meal.</p>
+                        </div>
+                    </article>
+
+                    <!-- Category 7: Ice Cream -->
+                    <article class="card category-card">
+                        <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=500&q=80" alt="Ice Cream">
+                        <div class="card-body">
+                            <h3>Ice Cream</h3>
+                            <p>Chilled, creamy scoops in classic and exotic flavors.</p>
+                        </div>
+                    </article>
+
+                    <!-- Category 8: Beverages -->
+                    <article class="card category-card">
+                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=500&q=80" alt="Beverages">
+                        <div class="card-body">
+                            <h3>Beverages</h3>
+                            <p>Refreshing thick shakes, juices, and cold coffees.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 4: POPULAR RESTAURANTS
+             Purpose: Showcases 6 top-rated restaurants with delivery info and menu buttons.
+             ===================================================================== -->
+        <section id="restaurants" class="section bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Popular Restaurants</h2>
+                    <p>Order from the highest-rated restaurants in your neighborhood.</p>
+                </div>
+
+                <!-- Grid Container for Restaurant Cards -->
+                <div class="grid-3">
+                    <!-- Restaurant 1 -->
+                    <article class="card restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Spice Paradise">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Spice Paradise</h3>
+                                <span class="rating">★ 4.8</span>
+                            </div>
+                            <p class="food-type">North Indian, Mughlai, Tandoor</p>
+                            <div class="restaurant-meta">
+                                <span>🕒 25-30 mins</span>
+                                <span>💰 Min: ₹150</span>
+                            </div>
+                            <a href="#dishes" class="btn btn-outline full-width">View Menu</a>
+                        </div>
+                    </article>
+
+                    <!-- Restaurant 2 -->
+                    <article class="card restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80" alt="Burger Town">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Burger Town</h3>
+                                <span class="rating">★ 4.6</span>
+                            </div>
+                            <p class="food-type">American, Fast Food, Shakes</p>
+                            <div class="restaurant-meta">
+                                <span>🕒 20-25 mins</span>
+                                <span>💰 Min: ₹100</span>
+                            </div>
+                            <a href="#dishes" class="btn btn-outline full-width">View Menu</a>
+                        </div>
+                    </article>
+
+                    <!-- Restaurant 3 -->
+                    <article class="card restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Pizza Palace">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Pizza Palace</h3>
+                                <span class="rating">★ 4.7</span>
+                            </div>
+                            <p class="food-type">Italian, Wood-Fired Pizza, Pasta</p>
+                            <div class="restaurant-meta">
+                                <span>🕒 30-35 mins</span>
+                                <span>💰 Min: ₹200</span>
+                            </div>
+                            <a href="#dishes" class="btn btn-outline full-width">View Menu</a>
+                        </div>
+                    </article>
+
+                    <!-- Restaurant 4 -->
+                    <article class="card restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" alt="Royal Biryani House">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Royal Biryani House</h3>
+                                <span class="rating">★ 4.9</span>
+                            </div>
+                            <p class="food-type">Hyderabadi Biryani, Kebabs</p>
+                            <div class="restaurant-meta">
+                                <span>🕒 25-35 mins</span>
+                                <span>💰 Min: ₹150</span>
+                            </div>
+                            <a href="#dishes" class="btn btn-outline full-width">View Menu</a>
+                        </div>
+                    </article>
+
+                    <!-- Restaurant 5 -->
+                    <article class="card restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80" alt="South Feast">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>South Feast</h3>
+                                <span class="rating">★ 4.5</span>
+                            </div>
+                            <p class="food-type">South Indian, Dosa, Filter Coffee</p>
+                            <div class="restaurant-meta">
+                                <span>🕒 15-20 mins</span>
+                                <span>💰 Min: ₹99</span>
+                            </div>
+                            <a href="#dishes" class="btn btn-outline full-width">View Menu</a>
+                        </div>
+                    </article>
+
+                    <!-- Restaurant 6 -->
+                    <article class="card restaurant-card">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="Sweet Cravings">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Sweet Cravings</h3>
+                                <span class="rating">★ 4.8</span>
+                            </div>
+                            <p class="food-type">Bakery, Cakes, Ice Cream</p>
+                            <div class="restaurant-meta">
+                                <span>🕒 20-30 mins</span>
+                                <span>💰 Min: ₹120</span>
+                            </div>
+                            <a href="#dishes" class="btn btn-outline full-width">View Menu</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 5: POPULAR DISHES
+             Purpose: Lists 8 best-selling food items with prices, ratings, and Add to Cart buttons.
+             ===================================================================== -->
+        <section id="dishes" class="section bg-cream">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Popular Dishes</h2>
+                    <p>Most ordered and loved dishes by our hungry foodies!</p>
+                </div>
+
+                <!-- Grid Container for Food Dish Cards -->
+                <div class="grid-4">
+                    <!-- Dish 1 -->
+                    <article class="card dish-card">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80" alt="Chicken Biryani">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Chicken Biryani</h3>
+                                <span class="rating">★ 4.9</span>
+                            </div>
+                            <p class="price">₹199</p>
+                            <p class="dish-desc">Fragrant basmati rice layered with tender spiced chicken and raita.</p>
+                            <a href="#contact" class="btn btn-primary full-width">Add to Cart</a>
+                        </div>
+                    </article>
+
+                    <!-- Dish 2 -->
+                    <article class="card dish-card">
+                        <img src="https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?auto=format&fit=crop&w=500&q=80" alt="Veg Biryani">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Veg Biryani</h3>
+                                <span class="rating">★ 4.6</span>
+                            </div>
+                            <p class="price">₹149</p>
+                            <p class="dish-desc">Garden-fresh vegetables slow-cooked with saffron rice and aromatic herbs.</p>
+                            <a href="#contact" class="btn btn-primary full-width">Add to Cart</a>
+                        </div>
+                    </article>
+
+                    <!-- Dish 3 -->
+                    <article class="card dish-card">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=500&q=80" alt="Cheese Pizza">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Cheese Pizza</h3>
+                                <span class="rating">★ 4.8</span>
+                            </div>
+                            <p class="price">₹249</p>
+                            <p class="dish-desc">Crispy hand-tossed crust topped with double mozzarella and tangy tomato sauce.</p>
+                            <a href="#contact" class="btn btn-primary full-width">Add to Cart</a>
+                        </div>
+                    </article>
+
+                    <!-- Dish 4 -->
+                    <article class="card dish-card">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" alt="Classic Burger">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Classic Burger</h3>
+                                <span class="rating">★ 4.7</span>
+                            </div>
+                            <p class="price">₹129</p>
+                            <p class="dish-desc">Grilled patty, fresh lettuce, cheddar cheese slice, and signature house sauce.</p>
+                            <a href="#contact" class="btn btn-primary full-width">Add to Cart</a>
+                        </div>
+                    </article>
+
+                    <!-- Dish 5 -->
+                    <article class="card dish-card">
+                        <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=500&q=80" alt="Paneer Tikka">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Paneer Tikka</h3>
+                                <span class="rating">★ 4.8</span>
+                            </div>
+                            <p class="price">₹179</p>
+                            <p class="dish-desc">Soft cottage cheese cubes marinated in yogurt and spices, roasted in tandoor.</p>
+                            <a href="#contact" class="btn btn-primary full-width">Add to Cart</a>
+                        </div>
+                    </article>
+
+                    <!-- Dish 6 -->
+                    <article class="card dish-card">
+                        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80" alt="Chicken Fried Rice">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Chicken Fried Rice</h3>
+                                <span class="rating">★ 4.5</span>
+                            </div>
+                            <p class="price">₹189</p>
+                            <p class="dish-desc">Wok-tossed rice with diced chicken, scrambled eggs, spring onions, and soy sauce.</p>
+                            <a href="#contact" class="btn btn-primary full-width">Add to Cart</a>
+                        </div>
+                    </article>
+
+                    <!-- Dish 7 -->
+                    <article class="card dish-card">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80" alt="Chocolate Cake">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Chocolate Cake</h3>
+                                <span class="rating">★ 4.9</span>
+                            </div>
+                            <p class="price">₹99</p>
+                            <p class="dish-desc">Rich, moist Belgian dark chocolate truffle slice that melts in your mouth.</p>
+                            <a href="#contact" class="btn btn-primary full-width">Add to Cart</a>
+                        </div>
+                    </article>
+
+                    <!-- Dish 8 -->
+                    <article class="card dish-card">
+                        <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=500&q=80" alt="Mango Milkshake">
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3>Mango Milkshake</h3>
+                                <span class="rating">★ 4.7</span>
+                            </div>
+                            <p class="price">₹89</p>
+                            <p class="dish-desc">Thick and creamy shake blended with sweet Alphonso mangoes and chilled milk.</p>
+                            <a href="#contact" class="btn btn-primary full-width">Add to Cart</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 6: SPECIAL OFFERS
+             Purpose: Highlights promotional discounts and coupon deals.
+             ===================================================================== -->
+        <section id="offers" class="section bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Special Offers & Deals</h2>
+                    <p>Save big on your meals with our exclusive discount coupons!</p>
+                </div>
+
+                <!-- Grid Container for Offer Cards -->
+                <div class="grid-4">
+                    <!-- Offer 1 -->
+                    <div class="offer-card offer-orange">
+                        <span class="offer-tag">NEW USER</span>
+                        <h3>20% OFF</h3>
+                        <p>Get 20% OFF on your first order with Foodie Hub.</p>
+                        <div class="coupon-code">Code: FIRST20</div>
+                        <a href="#dishes" class="btn btn-white">Grab the Offer</a>
+                    </div>
+
+                    <!-- Offer 2 -->
+                    <div class="offer-card offer-dark">
+                        <span class="offer-tag">PIZZA PARTY</span>
+                        <h3>Buy 1 Get 1 Free</h3>
+                        <p>Buy 1 Get 1 Free on selected medium and large pizzas.</p>
+                        <div class="coupon-code">Code: BOGOPIZZA</div>
+                        <a href="#dishes" class="btn btn-primary">Grab the Offer</a>
+                    </div>
+
+                    <!-- Offer 3 -->
+                    <div class="offer-card offer-orange">
+                        <span class="offer-tag">ZERO FEE</span>
+                        <h3>Free Delivery</h3>
+                        <p>Enjoy Free Delivery on all orders above ₹499.</p>
+                        <div class="coupon-code">Code: FREEDEL</div>
+                        <a href="#dishes" class="btn btn-white">Grab the Offer</a>
+                    </div>
+
+                    <!-- Offer 4 -->
+                    <div class="offer-card offer-dark">
+                        <span class="offer-tag">MEGA SAVER</span>
+                        <h3>Flat ₹100 OFF</h3>
+                        <p>Get Flat ₹100 OFF on family orders above ₹599.</p>
+                        <div class="coupon-code">Code: SAVE100</div>
+                        <a href="#dishes" class="btn btn-primary">Grab the Offer</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 7: WHY CHOOSE US?
+             Purpose: Explains 4 key benefits of ordering from Foodie Hub.
+             ===================================================================== -->
+        <section class="section bg-cream">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose Foodie Hub?</h2>
+                    <p>We bring happiness to your plate with quality and speed.</p>
+                </div>
+
+                <div class="grid-4">
+                    <!-- Benefit 1 -->
+                    <div class="feature-box">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Fast Delivery</h3>
+                        <p>Hot and fresh food delivered to your doorstep within 30 minutes.</p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="feature-box">
+                        <div class="feature-icon">🥗</div>
+                        <h3>Fresh Food</h3>
+                        <p>Prepared daily using 100% fresh ingredients and strict hygiene standards.</p>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="feature-box">
+                        <div class="feature-icon">🏆</div>
+                        <h3>Best Restaurants</h3>
+                        <p>Partnered with the most trusted and top-rated restaurants in town.</p>
+                    </div>
+
+                    <!-- Benefit 4 -->
+                    <div class="feature-box">
+                        <div class="feature-icon">💸</div>
+                        <h3>Affordable Prices</h3>
+                        <p>Delicious meals at pocket-friendly prices with exciting daily offers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 8: CUSTOMER REVIEWS
+             Purpose: Builds trust by showing 3 testimonials from happy customers.
+             ===================================================================== -->
+        <section class="section bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Our Customers Say</h2>
+                    <p>Real reviews from food lovers who order with us every day.</p>
+                </div>
+
+                <div class="grid-3">
+                    <!-- Review 1 -->
+                    <article class="review-card">
+                        <div class="review-header">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Aarav Sharma">
+                            <div>
+                                <h4>Aarav Sharma</h4>
+                                <span class="stars">★★★★★</span>
+                            </div>
+                        </div>
+                        <p>"The Chicken Biryani from Royal Biryani House arrived piping hot in just 25 minutes! Foodie Hub is my go-to app for dinner."</p>
+                    </article>
+
+                    <!-- Review 2 -->
+                    <article class="review-card">
+                        <div class="review-header">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Priya Nair">
+                            <div>
+                                <h4>Priya Nair</h4>
+                                <span class="stars">★★★★★</span>
+                            </div>
+                        </div>
+                        <p>"Amazing discounts and super easy to use! I used the Buy 1 Get 1 pizza offer last weekend and the quality was fantastic."</p>
+                    </article>
+
+                    <!-- Review 3 -->
+                    <article class="review-card">
+                        <div class="review-header">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Rohan Verma">
+                            <div>
+                                <h4>Rohan Verma</h4>
+                                <span class="stars">★★★★★</span>
+                            </div>
+                        </div>
+                        <p>"Best food delivery service for college students! Affordable prices, great packaging, and the Mango Milkshake is a must-try."</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 9: CONTACT SECTION
+             Purpose: Displays contact details and a visual frontend contact form.
+             ===================================================================== -->
+        <section id="contact" class="section bg-cream">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Contact Us</h2>
+                    <p>Have a question, feedback, or need help with an order? Reach out to us!</p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <!-- Left Side: Contact Information -->
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p>We are available 24/7 to serve you the best food experience.</p>
+                        
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div>
+                                <h4>Phone Number</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">✉️</span>
+                            <div>
+                                <h4>Email Address</h4>
+                                <p>support@foodiehub.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div>
+                                <h4>Head Office Address</h4>
+                                <p>123 Food Street, MG Road, Bengaluru, India - 560001</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Contact Form (Frontend Visual Only) -->
+                    <div class="contact-form-box">
+                        <h3>Send Us a Message</h3>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary full-width">Submit Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================================
+         SECTION 10: FOOTER
+         Purpose: Bottom navigation, about summary, support links, social icons, and copyright.
+         ===================================================================== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- Column 1: Logo & About Us -->
+            <div class="footer-col">
+                <a href="#home" class="footer-logo">🍔 FOODIE <span>HUB</span></a>
+                <p class="footer-tagline">"Good Food, Great Mood!"</p>
+                <p class="footer-about">Foodie Hub connects you with the best local restaurants, delivering fresh and delicious meals straight to your door.</p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Food Categories</a></li>
+                    <li><a href="#restaurants">Restaurants</a></li>
+                    <li><a href="#dishes">Popular Dishes</a></li>
+                    <li><a href="#offers">Special Offers</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Customer Support -->
+            <div class="footer-col">
+                <h4>Customer Support</h4>
+                <ul>
+                    <li><a href="#contact">Help Center</a></li>
+                    <li><a href="#contact">Track Your Order</a></li>
+                    <li><a href="#contact">Terms & Conditions</a></li>
+                    <li><a href="#contact">Privacy Policy</a></li>
+                    <li><a href="#contact">Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Social Media -->
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <p>Stay connected for daily food deals and updates!</p>
+                <div class="social-links">
+                    <a href="#home" aria-label="Facebook">📘 Facebook</a>
+                    <a href="#home" aria-label="Instagram">📸 Instagram</a>
+                    <a href="#home" aria-label="Twitter">🐦 Twitter</a>
+                    <a href="#home" aria-label="YouTube">▶️ YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Copyright Bar -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 FOODIE HUB. All Rights Reserved. | Designed for First-Year Web Development Project.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
